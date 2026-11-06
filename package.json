@@ -1,0 +1,32 @@
+{
+  "name": "cartera-prestamos",
+  "version": "1.0.0",
+  "description": "Sistema de administración de préstamos, facturación mensual y cartera",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node scripts/test.js",
+    "demo": "node scripts/seed-demo.js",
+    "build:web": "node scripts/build-web.js",
+    "test:pg": "node scripts/test-pg.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "chart.js": "^4.4.4",
+    "compression": "^1.7.5",
+    "exceljs": "^4.4.0",
+    "express": "^5.3.0",
+    "jszip": "^3.10.2",
+    "pg": "^8.13.1"
+  },
+  "private": true,
+  "devDependencies": {
+    "esbuild": "^0.24.2"
+  },
+  "engines": {
+    "node": ">=22 <23"
+  }
+}

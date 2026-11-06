@@ -1,0 +1,21 @@
+# Despliegue en Render (https://render.com) como "Blueprint".
+# Servidor Node.js; los datos se guardan en PostgreSQL de Supabase (variable DATABASE_URL).
+services:
+  - type: web
+    name: cartera-prestamos
+    runtime: node
+    plan: free               # con Supabase no se necesita disco; "starter" evita que el servicio se duerma
+    region: virginia         # la región más cercana a Colombia
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: DATABASE_URL     # cadena de conexión de Supabase (Session pooler); Render la pide al crear el servicio
+        sync: false
+      - key: ADMIN_PASSWORD   # contraseña inicial del usuario admin (solo se usa la primera vez)
+        sync: false
